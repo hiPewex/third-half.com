@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang = "en">
+    
+<head>
+    <meta charset = "utf-8"/>
+    <title>Third Half</title>
+    <meta name = "description" content = "Football news & more"/>
+    <link rel = "stylesheet" href = "style2.css">
+    <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- website image -->
+    <link rel = "icon" href = "website_image/favicon.ico">
+    
+</head>
+
+<body onload = "initClock()"> 
+    <section class = "showcase"> <!-- showcase active -->
+        <header>
+            <!-- logo -->
+            <h2 class = "logo"><img src = "icons/main/logo.png" class = "image">Third Half</h2>
+            <div class = "toggle"></div> <!-- toggle active -->
+        </header>
+        
+        <!-- video -->
+        <video src = "video/video_2.mp4" autoplay muted loop></video>
+        
+        <div class = "overlay"></div>
+        
+        <div class = "text">
+            <h2>Third Half</h2>
+            <h3>Football news & more</h3>
+            <p>The Third Half website is the world's soccer website. Here you will find the latest information about your favorite team, current games, transfers, news and much more! <br> We provide the opportunity to create a virtual account on our website, so you can actively participate in discussions about things that interest you.
+            <br>Thank you for using our website.
+            <br>The Third Half is you!</p>     
+        </div>
+        
+        <!-- clock -->
+        <div class = "datetime">
+            <div class = "date">
+                <span id = "dayname">Day</span> |
+                <span id = "month">Month</span>
+                <span id = "daynum">00</span> |
+                <span id = "year">Year</span>
+            </div>
+            
+            <div class = "time">
+                <span id = "hour">00</span>:
+                <span id = "minutes">00</span>:
+                <span id = "seconds">00</span>
+                <span id = "period">AM</span>
+            </div>
+        </div>
+        
+        <!-- clock script -->
+        <script type = "text/javascript">
+            function updateClock(){
+                var now = new Date();
+                var dname = now.getDay(),
+                    mo = now.getMonth(),
+                    dnum = now.getDate(),
+                    yr = now.getFullYear(),
+                    hou = now.getHours(),
+                    min = now.getMinutes(),
+                    sec = now.getSeconds(),
+                    pe = "AM";
+                
+                if(hou == 0){
+                    hou = 12;
+                }
+                if(hou > 12){
+                    hou = hou - 12;
+                    pe = "PM";
+                }
+                
+                Number.prototype.pad = function(digits){
+                    for(var n = this.toString(); n.length < digits; n = 0 + n);
+                    return n;
+                }
+                
+                var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                
+                var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                
+                var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
+                
+                var values = [week[dname], months[mo], dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
+                
+                for(var i = 0; i < ids.length; i++)
+                document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+            }
+            
+            function initClock(){
+                updateClock();
+                window.setInterval("updateClock()", 1);
+            }
+            
+        </script>
+        
+        <!-- social icons -->
+        <ul class = "social">
+            <li><a href = "#"><img src = "icons/main/facebook.png" alt = "Facebook"></a></li>
+            <li><a href = "#"><img src = "icons/main/twitter.png" alt = "Twitter"></a></li>
+            <li><a href = "#"><img src = "icons/main/youtube.png" alt = "YouTube"></a></li>
+            <li><a href = "#"><img src = "icons/main/instagram.png" alt = "Instagram"></a></li>
+            <li><a href = "#"><img src = "icons/main/linkedin.png" alt = "Linkedin"></a></li>
+        </ul>
+    </section>
+    
+    <!-- menu functions & move to another page -->
+    <div class = "middle">
+        <div class = "menu">
+            
+            <!-- news section -->
+            <li class = "item" id = 'news'>
+                <a href = "#news" class = "btn"><i class="fa fa-newspaper-o"></i>News</a>
+                    <div class = "smenu">
+                        <a href = "latest_news_page/latest_news.html">Latest news</a>
+                        <a href = "transfers_page/transfers.html">Transfers</a>
+                        <a href = "#"><i class="fa fa-caret-up" aria-hidden="true"></i>Back</a>
+                    </div>
+            </li>
+            
+            <!-- menu container -->
+            <div class = "menu_container">
+                
+            <!-- leagues section -->
+            <li class = "item" id = 'leagues'>
+                <a href = "#leagues" class = "btn"><i class="fa fa-futbol-o"></i>Leagues</a>
+                    <div class = "smenu">
+                        <a href = "premier_league_page/premier_league.html">Premier League</a>
+                        <a href = "bundesliga_page/bundesliga.html">Bundesliga</a>
+                        <a href = "laliga_page/laliga.html">LaLiga</a>
+                        <a href = "seriea_page/seriea.html">Serie A</a>
+                        <a href = "ligue1_page/ligue1.html">Ligue 1</a>
+                        <a href = "champions_league_page/champions_league.html">Champions League</a>
+                        <a href = "europa_league_page/europa_league.html">Europa League</a>
+                        <a href = "conference_league_page/conference_league.html">Conference League</a>
+                        <a href = "national_competitions_page/national.html">National Competitions</a>
+                        <a href = "#"><i class="fa fa-caret-up" aria-hidden="true"></i>Back</a>
+                    </div>
+            </li>
+            
+            <!-- profile section -->
+            <li class = "item" id = 'profile'>
+                <a href = "#profile" class = "btn"><i class="fa fa-user-circle"></i>Profile</a>
+                    <div class = "smenu">
+                        <a href = "login_page/login.html">Login</a>
+                        <a href = "login_page/register_page/register.html">Register</a>
+                        <a href = "#">Sign out</a>
+                        <a href = "#"><i class="fa fa-caret-up" aria-hidden="true"></i>Back</a>
+                    </div>
+            </li>
+            
+            <!-- contact section -->
+            <li class = "item">
+                <a href = "contact_page/contact.html" class = "btn"><i class="fa fa-phone"></i>Contact</a>
+            </li>
+            
+            <!-- about us section -->
+            <li class = "item">
+                <a href = "about_us_page/about_us.html" class = "btn"><i class="fa fa-users"></i>About Us</a>
+            </li>
+            
+            <!-- more section -->
+            <li class = "item" id = 'more'>
+                <a href = "#more" class = "btn"><i class="fa fa-cog"></i>More</a>
+                    <div class = "smenu">
+                        <a href = "help_page/help.html">Help</a>
+                        <a href = "settings_page/settings.html">Settings</a>
+                        <a href = "#"><i class="fa fa-caret-up" aria-hidden="true"></i>Back</a>
+                    </div>
+            </li>
+            
+        </div>
+    </div>
+
+    <!-- menu opening -->
+    <script>
+        const menuToggle = document.querySelector('.toggle')
+        const showcase = document.querySelector('.showcase')
+        
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active')
+            showcase.classList.toggle('active')
+        })
+        
+    </script>
+    
+</body>
+    
+</html>
